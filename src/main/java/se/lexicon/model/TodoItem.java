@@ -1,6 +1,7 @@
 package se.lexicon.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class TodoItem {
     private int id;
@@ -81,9 +82,32 @@ public class TodoItem {
         this.creator = creator;
     }
 
-    public String getSummary() {
-        return String.format("{id: %d, title: %s, description: %s, deadline: %s, done: %b, creator: %s}",
-                id, title, description, deadline, done, creator.getSummary());
+    public String toString() {
+        return "TodoItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", deadline=" + deadline +
+                ", done=" + done +
+                '}';
+    }
+
+    // Override equals() and hashCode() methods
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TodoItem todoItem = (TodoItem) o;
+        return id == todoItem.id &&
+                done == todoItem.done &&
+                Objects.equals(title, todoItem.title) &&
+                Objects.equals(description, todoItem.description) &&
+                Objects.equals(deadline, todoItem.deadline);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, deadline, done);
     }
 
     public boolean isOverdue() {

@@ -11,12 +11,7 @@ public class PersonTest {
         assertEquals("john.doe@example.com", person.getEmail());
     }
 
-    @Test
-    public void testPersonGetSummary() {
-        Person person = new Person(1, "John", "Doe", "john.doe@example.com");
-        String expected = "{id: 1, name: John Doe, email: john.doe@example.com}";
-        assertEquals(expected, person.getSummary());
-    }
+
 
     @Test
     public void testNullFirstName() {

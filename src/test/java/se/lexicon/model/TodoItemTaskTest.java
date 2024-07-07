@@ -69,13 +69,5 @@ public class TodoItemTaskTest {
         });
     }
 
-    @Test
-    public void testGetSummary() {
-        Person creator = new Person(1, "John", "Doe", "john.doe@example.com");
-        TodoItem item = new TodoItem(1, "Title", "Description", LocalDate.now().plusDays(1), creator);
-        Person assignee = new Person(2, "Jane", "Smith", "jane.smith@example.com");
-        TodoItemTask task = new TodoItemTask(1, item, assignee);
-        String expected = String.format("{id: 1, assigned: true, todoItem: %s, assignee: %s}", item.getSummary(), assignee.getSummary());
-        assertEquals(expected, task.getSummary());
-    }
+
 }

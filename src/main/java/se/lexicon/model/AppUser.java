@@ -3,13 +3,14 @@ package se.lexicon.model;
 import java.util.Objects;
 
 public class AppUser {
+    private int id;
     private String username;
     private String password;
     private AppRole role;
 
     // Constructor, getters, and setters
 
-    public AppUser(String username, String password, AppRole role) {
+    public AppUser(int id, String username, String password, AppRole role) {
         if (username == null || username.isEmpty()) {
             throw new IllegalArgumentException("Username cannot be null or empty");
         }
@@ -19,9 +20,18 @@ public class AppUser {
         if (role == null) {
             throw new IllegalArgumentException("Role cannot be null");
         }
+        this.id=id;
         this.username = username;
         this.password = password;
         this.role = role;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -60,7 +70,7 @@ public class AppUser {
     // Override toString() method
     @Override
     public String toString() {
-        return "AppUser{username='" + username + '\'' + ", role=" + role + '}';
+        return "AppUser{id=" + id +" username='" + username + '\'' + ", role=" + role + '}';
     }
 
     // Override equals() and hashCode() methods
@@ -69,11 +79,13 @@ public class AppUser {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AppUser appUser = (AppUser) o;
-        return Objects.equals(username, appUser.username) && Objects.equals(role, appUser.role);
+        return id == appUser.id &&
+                Objects.equals(username, appUser.username) &&
+                Objects.equals(role, appUser.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, role);
+        return Objects.hash(id, username, role);
     }
 }

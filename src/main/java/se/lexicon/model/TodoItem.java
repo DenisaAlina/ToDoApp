@@ -11,18 +11,24 @@ public class TodoItem {
     private boolean done;
     private Person creator;
 
-
     public TodoItem(int id, String title, String description, LocalDate deadline, Person creator) {
-        if (title == null || title.isEmpty() || deadline == null || creator == null) {
-            throw new IllegalArgumentException("Title, deadline, and creator cannot be null or empty");
+        if (title == null || title.isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be null or empty");
+        }
+        if (deadline == null) {
+            throw new IllegalArgumentException("Deadline cannot be null");
+        }
+        if (creator == null) {
+            throw new IllegalArgumentException("Creator cannot be null");
         }
         this.id = id;
         this.title = title;
         this.description = description;
         this.deadline = deadline;
         this.creator = creator;
-        this.done = false; // default value
+        this.done = false;
     }
+
 
     public int getId() {
 

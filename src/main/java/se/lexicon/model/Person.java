@@ -12,19 +12,27 @@ public class Person {
     private AppUser credentials;
 
 
-    public Person(int id, String firstName, String lastName, String email, AppUser credentials) {
+    public Person(int id, String firstName, String lastName, String email) {
         if (firstName == null || lastName == null || email == null) {
-            throw new IllegalArgumentException("First name, last name and email cannot be null");
+            throw new IllegalArgumentException("Fields cannot be null");
         }
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.credentials = credentials;
     }
 
-    public Person(int id, String firstName, String lastName, String email) {
-        this(id, firstName, lastName, email, null);
+    public Person(int id, AppUser credentials, String email, String lastName, String firstName) {
+        this.id = id;
+        this.credentials = credentials;
+        this.email = email;
+        this.lastName = lastName;
+        this.firstName = firstName;
+    }
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
 

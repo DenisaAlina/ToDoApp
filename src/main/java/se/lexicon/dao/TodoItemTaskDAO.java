@@ -1,14 +1,16 @@
 package se.lexicon.dao;
 
-import se.lexicon.model.TodoItemTask;
+import se.lexicon.model.ToDoItemTask;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 public interface TodoItemTaskDAO {
-    TodoItemTask persist(TodoItemTask todoItemTask);
-    TodoItemTask findById(int id);
-    List<TodoItemTask> findAll();
-    List<TodoItemTask> findByAssignedStatus(boolean status);
-    List<TodoItemTask> findByPersonId(int personId);
-    void remove(TodoItemTask todoItemTask);
+    ToDoItemTask persist(ToDoItemTask todoItemTask);
+    ToDoItemTask findById(int todoItemTaskId);
+    ArrayList<ToDoItemTask> findAll();
+    ArrayList<ToDoItemTask> findByAssignedStatus(boolean done);
+    ArrayList<ToDoItemTask> findByPersonId(int personId);
+    void remove(int todoItemTaskId);
 }
